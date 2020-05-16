@@ -6,7 +6,9 @@ using System.Runtime.InteropServices;
 namespace BuilderSleeve
 {
     /// <summary>
-    /// Класс подключает экземпляры построителя модели к САПР Компас 3D и инициализирует их
+    /// Класс подключает 
+    /// к САПР Компас 3Д и инициализирует
+    /// экземпляр построителя модели
     /// </summary>
     public class Manager
     {
@@ -16,7 +18,7 @@ namespace BuilderSleeve
         private BuilderModel _builderModel;
 
         /// <summary>
-        /// Подключение к экземпляру компас 3D
+        /// Подключение к экземпляру компас 3Д
         /// </summary>
         /// <returns>Экземпляр Kompas</returns>
         private KompasObject OpenKompas3D()
@@ -41,7 +43,9 @@ namespace BuilderSleeve
         }
         
         /// <summary>
-        /// Конструктор класса Manager вызывает метод для инициализации экземпляра построителя 3D модели 
+        /// Конструктор класса Manager
+        /// Вызывает метод для инициализации
+        /// экземпляра построителя 3D модели 
         /// </summary>
         /// <param name="parameters">Параметры модели</param>
         public Manager(ModelParameters parameters)

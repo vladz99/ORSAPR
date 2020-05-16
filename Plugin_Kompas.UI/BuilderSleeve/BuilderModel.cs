@@ -5,12 +5,12 @@ using Kompas6Constants3D;
 namespace BuilderSleeve
 {
     /// <summary>
-    /// Класс для построения 3D модели в САПР Компас 3D
+    /// Класс для построения 3Д модели в САПР Компас 3Д
     /// </summary>
     public class BuilderModel
     {
         /// <summary>
-        /// Хранит ссылку на экземпляр объекта Компас 3D
+        /// Хранит ссылку на экземпляр объекта Компас 3Д
         /// </summary>
         private KompasObject _kompasObject;
 
@@ -23,7 +23,7 @@ namespace BuilderSleeve
         /// Конструктор класса BuilderModel
         /// </summary>
         /// <param name="parameters">Параметры модели</param>
-        /// <param name="kompas">Экземпляр Компас 3D</param>
+        /// <param name="kompas">Экзепляр Компас 3Д</param>
         public BuilderModel(ModelParameters parameters, KompasObject kompas)
         {
             _modelelParameters = parameters;
@@ -32,7 +32,7 @@ namespace BuilderSleeve
         }
 
         /// <summary>
-        /// Построения 3D модели
+        /// Построения 3Д модели
         /// </summary>
         private void CreateModel()
         {
@@ -45,7 +45,12 @@ namespace BuilderSleeve
             CreateMiddleRing(iPart);
             CreateJumper(iPart);
             CreateCentralRing(iPart);
-            CutCentralRing(iPart);
+        }
+
+        private double Parameter(ParametersName name)
+        {
+            return _modelelParameters.
+                Parameter(name).Value;
         }
 
         /// <summary>
@@ -63,14 +68,12 @@ namespace BuilderSleeve
             iDefinitionSketch.SetPlane(planeXOZ);
             iSketch.Create();
             ksDocument2D iDocument2D = (ksDocument2D)iDefinitionSketch.BeginEdit();
-            var radius1 = 
-                _modelelParameters.Parameter(ParametersName.OuterRingDiameter1).Value / 2;
-            var radius2 = 
-                _modelelParameters.Parameter(ParametersName.OuterRingDiameter2).Value / 2;
+            var radius1 = Parameter(ParametersName.OuterRingDiameter1) / 2;
+            var radius2 = Parameter(ParametersName.OuterRingDiameter2) / 2;
             iDocument2D.ksCircle(0, 0, radius1, 1);
             iDocument2D.ksCircle(0, 0, radius2, 1);
             iDefinitionSketch.EndEdit();
-            var depth = _modelelParameters.Parameter(ParametersName.OuterRingHeight).Value;
+            var depth = Parameter(ParametersName.OuterRingHeight);
             ExctrusionSketch(iPart, iSketch, depth, false);
         }
 
@@ -89,15 +92,12 @@ namespace BuilderSleeve
             iDefinitionSketch.SetPlane(planeXOZ);
             iSketch.Create();
             ksDocument2D iDocument2D = (ksDocument2D)iDefinitionSketch.BeginEdit();
-            var radius1 = 
-                _modelelParameters.Parameter(ParametersName.MiddleRingDiameter1).Value / 2;
-            var radius2 = 
-                _modelelParameters.Parameter(ParametersName.MiddleRingDiameter2).Value / 2;
+            var radius1 = Parameter(ParametersName.MiddleRingDiameter1) / 2;
+            var radius2 = Parameter(ParametersName.MiddleRingDiameter2) / 2;
             iDocument2D.ksCircle(0, 0, radius1, 1);
             iDocument2D.ksCircle(0, 0, radius2, 1);
             iDefinitionSketch.EndEdit();
-            var depth = 
-                _modelelParameters.Parameter(ParametersName.MiddleRingHeight).Value;
+            var depth = Parameter(ParametersName.MiddleRingHeight);
             ExctrusionSketch(iPart, iSketch, depth, false);
         }
 
@@ -115,12 +115,9 @@ namespace BuilderSleeve
             iDefinitionSketch.SetPlane(planeZOY);
             iSketch.Create();
             ksDocument2D iDocument2D = (ksDocument2D)iDefinitionSketch.BeginEdit();
-            var radius1 = 
-                _modelelParameters.Parameter(ParametersName.JumperDiameter).Value / 2;
-            var heightCentral = 
-                _modelelParameters.Parameter(ParametersName.CentralRingHeight).Value / 2;
-            var heightMiddle = 
-                _modelelParameters.Parameter(ParametersName.MiddleRingHeight).Value / 2;
+            var radius1 = Parameter(ParametersName.JumperDiameter) / 2;
+            var heightCentral = Parameter(ParametersName.CentralRingHeight) / 2;
+            var heightMiddle = Parameter(ParametersName.MiddleRingHeight) / 2;
             if (heightCentral > heightMiddle)
             {
                 iDocument2D.ksCircle(0, heightMiddle, radius1, 1);
@@ -130,16 +127,15 @@ namespace BuilderSleeve
                 iDocument2D.ksCircle(0, heightCentral, radius1, 1);
             }
             iDefinitionSketch.EndEdit();
-            var depth = 
-                _modelelParameters.Parameter(ParametersName.MiddleRingDiameter1).Value / 2;
+            var depth = Parameter(ParametersName.MiddleRingDiameter1) / 2;
             var extrusion = 
                 ExctrusionSketch(iPart, iSketch, depth, false);
             ksEntity entityCircularCopy = 
                 (ksEntity)iPart.NewEntity((short)Obj3dType.o3d_circularCopy);
             ksCircularCopyDefinition ICircularCopyDefinition =
                 (ksCircularCopyDefinition)entityCircularCopy.GetDefinition();
-            ICircularCopyDefinition.count2 = 
-                (int)_modelelParameters.Parameter(ParametersName.JumperNumber).Value;
+            ICircularCopyDefinition.count2 =
+                (int)Parameter(ParametersName.JumperNumber);
 
             ksEntity entityAxis = 
                 (ksEntity)iPart.NewEntity((short)Obj3dType.o3d_axis2Planes);
@@ -149,12 +145,11 @@ namespace BuilderSleeve
                 (ksEntity)iPart.GetDefaultEntity((short)Obj3dType.o3d_planeXOY);
             ksEntity planeYOZ =
                 (ksEntity)iPart.GetDefaultEntity((short)Obj3dType.o3d_planeYOZ);
-
             iAxis2PlanesDefinition.SetPlane(1, planeXOY);
             iAxis2PlanesDefinition.SetPlane(2, planeYOZ);
             entityAxis.Create();
             var numberJamper = 
-                (int)_modelelParameters.Parameter(ParametersName.JumperNumber).Value;
+                (int)Parameter(ParametersName.JumperNumber);
             ICircularCopyDefinition.SetCopyParamAlongDir(numberJamper,
                 360 / numberJamper, false, false);
             EntityCollection entityCollection =
@@ -171,8 +166,7 @@ namespace BuilderSleeve
         /// <param name="iPart">Интерфейс детали</param>
         private void CreateCentralRing(ksPart iPart)
         {
-            var depth = 
-                _modelelParameters.Parameter(ParametersName.CentralRingHeight).Value;
+            var depth = Parameter(ParametersName.CentralRingHeight);
             ksEntity planeXOZ =
                 (ksEntity)iPart.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
             ksEntity iSketch =
@@ -182,14 +176,78 @@ namespace BuilderSleeve
             iDefinitionSketch.SetPlane(planeXOZ);
             iSketch.Create();
             ksDocument2D iDocument2D = (ksDocument2D)iDefinitionSketch.BeginEdit();
-            var radius1 = 
-                _modelelParameters.Parameter(ParametersName.CentralRingDiameter1).Value / 2;
-            var radius2 = 
-                _modelelParameters.Parameter(ParametersName.CentralRingDiameter2).Value / 2;
+            var radius1 = Parameter(ParametersName.CentralRingDiameter1) / 2;
+            var radius2 = Parameter(ParametersName.CentralRingDiameter2) / 2;
             iDocument2D.ksCircle(0, 0, radius1, 1);
             iDocument2D.ksCircle(0, 0, radius2, 1);
             iDefinitionSketch.EndEdit();
             ExctrusionSketch(iPart, iSketch, depth, false);
+            CutCentralRing(iPart);
+            CreateThread(iPart);
+        }
+
+        /// <summary>
+        /// Создание резьбы во внутренней части маленького кольца
+        /// </summary>
+        /// <param name="iPart">Интерфейс детали</param>
+        private void CreateThread(ksPart iPart)
+        {
+            ksEntity planeXOY =
+                (ksEntity)iPart.GetDefaultEntity((short)Obj3dType.o3d_planeXOY);
+            ksEntity iSketch =
+                (ksEntity)iPart.NewEntity((short)Obj3dType.o3d_sketch);
+            ksSketchDefinition iDefinitionSketch =
+                (ksSketchDefinition)iSketch.GetDefinition();
+            iDefinitionSketch.SetPlane(planeXOY);
+            iSketch.Create();
+            ksDocument2D iDocument2D = (ksDocument2D)iDefinitionSketch.BeginEdit();
+            var X = Parameter(ParametersName.CentralRingDiameter1) / 2;
+            var Y = 0;
+            if (_modelelParameters.ThreadTypeValue() != ThreadType.NoneThread)
+            {
+                if(_modelelParameters.ThreadTypeValue() == ThreadType.MetricThread)
+                {
+                    iDocument2D.ksLineSeg(X - 3, Y - 0.5, X + 2, Y, 1);
+                    iDocument2D.ksLineSeg(X - 3, Y + 0.5, X + 2, Y, 1);
+                    iDocument2D.ksLineSeg(X - 3, Y - 0.5, X - 3, Y + 0.5, 1);
+                }
+                if(_modelelParameters.ThreadTypeValue() == ThreadType.ThrustThread)
+                {
+                    iDocument2D.ksLineSeg(X - 3, Y, X + 2, Y, 1);
+                    iDocument2D.ksLineSeg(X - 3, Y + 1, X + 2, Y, 1);
+                    iDocument2D.ksLineSeg(X - 3, Y, X - 3, Y + 1, 1);
+                }
+                iDefinitionSketch.EndEdit();
+
+                ksEntity conicSpiral =
+                    (ksEntity)iPart.NewEntity((short)Obj3dType.o3d_cylindricSpiral);
+                ksCylindricSpiralDefinition iCylindricSpiralDefinition =
+                    (ksCylindricSpiralDefinition)conicSpiral.GetDefinition();
+                iCylindricSpiralDefinition.diamType = 0;
+                iCylindricSpiralDefinition.buildDir = false;
+                iCylindricSpiralDefinition.diam = Parameter(ParametersName.CentralRingDiameter1);
+                iCylindricSpiralDefinition.buildMode = 2;
+                iCylindricSpiralDefinition.turn = 20;
+                iCylindricSpiralDefinition.height = Parameter(ParametersName.CentralRingHeight);
+
+                ksEntityCollection entityCollectionPart =
+                    (ksEntityCollection)iPart.EntityCollection((short)Obj3dType.o3d_face);
+                ksEntity planeXOZ =
+                    (ksEntity)iPart.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
+                iCylindricSpiralDefinition.SetPlane(planeXOZ);
+                conicSpiral.useColor = 00000;
+                conicSpiral.Create();
+
+                ksEntity cinematicEvolition =
+                    (ksEntity)iPart.NewEntity((short)Obj3dType.o3d_cutEvolution);
+                ksCutEvolutionDefinition CutEvolutionDefinition =
+                    (ksCutEvolutionDefinition)cinematicEvolition.GetDefinition();
+                CutEvolutionDefinition.SetSketch(iSketch);
+                ksEntityCollection collection = 
+                    (ksEntityCollection)CutEvolutionDefinition.PathPartArray();
+                collection.Add(conicSpiral);
+                cinematicEvolition.Create();
+            }
         }
 
         /// <summary>
@@ -198,8 +256,7 @@ namespace BuilderSleeve
         /// <param name="iPart">Интерфейс детали</param>
         private void CutCentralRing(ksPart iPart)
         {
-            var depth = 
-                _modelelParameters.Parameter(ParametersName.CentralRingHeight).Value;
+            var depth = Parameter(ParametersName.CentralRingHeight);
             ksEntity planeXOZ =
                 (ksEntity)iPart.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
             ksEntity iSketch =
@@ -210,8 +267,7 @@ namespace BuilderSleeve
             iSketch.Create();
             ksDocument2D iDocument2D = 
                 (ksDocument2D)iDefinitionSketch.BeginEdit();
-            var radius1 = 
-                _modelelParameters.Parameter(ParametersName.CentralRingDiameter1).Value / 2;
+            var radius1 = Parameter(ParametersName.CentralRingDiameter1) / 2;
             iDocument2D.ksCircle(0, 0, radius1, 1);
             iDefinitionSketch.EndEdit();
             CutExctrusionSketch(iPart, iSketch, depth, true);
@@ -250,6 +306,7 @@ namespace BuilderSleeve
             {
                 extrProp.depthNormal = depth;
             }
+
             entityExtr.Create();
             return entityExtr;
         }
