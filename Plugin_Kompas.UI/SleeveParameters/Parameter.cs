@@ -33,10 +33,6 @@ namespace SleeveParameters
 
         /// <summary>
         /// Устанавливает и возвращает текущее значение параметра
-        /// Текущее значение будет 
-        /// устанановлено, если пришедшее значение
-        /// входит в диапозон параметров
-        /// от _minValue до _maxValue
         /// </summary>
         public double Value
         {
@@ -46,11 +42,8 @@ namespace SleeveParameters
             }
             set
             {
-                //Если значение пришедшее для записи больше максимально возможного
-                //или меньше минимально возможного
                 if (value.CompareTo(MinValue) < 0 || value.CompareTo(MaxValue) > 0)
                 {
-                    //Вызов ошибки
                     throw new ArgumentException("Необходимо, чтобы значение " 
                         + _name + " находилось в диапозоне от " +
                         MinValue + " до " + MaxValue);

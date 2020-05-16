@@ -16,6 +16,33 @@ namespace SleeveParameters
             new Dictionary<ParametersName, Parameter>();
 
         /// <summary>
+        /// Поле хранит тип резьбы 
+        /// маленького кольца
+        /// </summary>
+        private ThreadType _threadType;
+
+        /// <summary>
+        /// Возвращает текущий
+        /// тип резьбы 
+        /// маленького кольца
+        /// </summary>
+        /// <returns></returns>
+        public ThreadType ThreadTypeValue()
+        {
+            return _threadType;
+        }
+
+        /// <summary>
+        /// Устанавливает текущий 
+        /// вид резьбы
+        /// маленького кольца
+        /// </summary>
+        public void InstallThreadType(ThreadType type)
+        {
+            _threadType = type;
+        }
+
+        /// <summary>
         /// Возвращает параметер 
         /// в соответствии с заданным именем
         /// </summary>
@@ -37,7 +64,7 @@ namespace SleeveParameters
         }
 
         /// <summary>
-        /// Расчет диаметра внешнего кольца
+        /// Расчет диаметра большого кольца
         /// </summary>
         public void CalculationOuterRingDiameter1()
         {
@@ -78,7 +105,7 @@ namespace SleeveParameters
         }
 
         /// <summary>
-        /// Расчет диаметров среднего и центрального
+        /// Расчет диаметров большого и маленького
         /// колец
         /// </summary>
         public void CalculationDiameterMidelAndCenter()
@@ -117,7 +144,6 @@ namespace SleeveParameters
         public ModelParameters()
         {
             _parameters = new Dictionary<ParametersName, Parameter>();
-            //Создаем кортеж со значениями параметров модели
             var values = new List<(double min, double max, ParametersName name)>
             {
                 (50, 60, ParametersName.CentralRingDiameter1),
@@ -134,30 +160,23 @@ namespace SleeveParameters
                 (10, 35, ParametersName.OuterRingHeight),
                 (10, 35, ParametersName.SleeveHeight)
             };
-            //Перебираем все значения картежа 
             foreach (var value in values)
             {
-                //Создание нового параметра
                 Parameter parameter = null;
-                //Если обрабатываем значение длины рукояти
                 if (value.name == ParametersName.MiddleRingDiameter1
                     || value.name == ParametersName.JumperLenght
                     || value.name == ParametersName.SleeveHeight)
                 {
-                    //Создаем новый параметр и передаем значения из кортежа 
-                    //в конструктор
                     parameter = 
                         new Parameter(value.min, value.max, value.max, value.name.ToString());
                 }
                 else
                 {
-                    //Создаем новый параметр и передаем значения из кортежа 
-                    //в конструктор
                     parameter = 
                         new Parameter(value.min, value.max, value.min, value.name.ToString());
                 }
-                //Добавляем созданный параметр в словарь параметров
                 _parameters.Add(value.name,parameter);
+                _threadType = ThreadType.NoneThread;
             }
         }   
     }

@@ -210,6 +210,7 @@ namespace Plugin_Kompas.UI
                 textBox.Text =
                     string.Concat(_modelParameters.Parameter(parameterName).Value);
             }
+            ThreadTypeСomboBox.Text = "Нет";
             //Отображение интервалов
             //
             DisplayInterval(ParametersName.CentralRingHeight, CentralHLabel);
@@ -227,6 +228,29 @@ namespace Plugin_Kompas.UI
         private void BuilderButton_Click(object sender, EventArgs e)
         {
             var manager = new Manager(_modelParameters);
+        }
+
+        /// <summary>
+        /// Метод для изменения типа резьбы
+        /// при изменения значения текста
+        /// в элементе ComboBox
+        /// </summary>
+        /// <param name="sender">Объект</param>
+        /// <param name="e">Действие</param>
+        private void ThreadTypeСomboBox_TextChanged(object sender, EventArgs e)
+        {
+            if(ThreadTypeСomboBox.Text == "Нет")
+            {
+                _modelParameters.InstallThreadType(ThreadType.NoneThread);
+            }
+            if (ThreadTypeСomboBox.Text == "Метрическая")
+            {
+                _modelParameters.InstallThreadType(ThreadType.MetricThread);
+            }
+            if (ThreadTypeСomboBox.Text == "Упорная")
+            {
+                _modelParameters.InstallThreadType(ThreadType.ThrustThread);
+            }
         }
     }
 }

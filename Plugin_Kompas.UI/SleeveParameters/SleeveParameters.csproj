@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ThreadType.cs" />
     <Compile Include="ModelParameters.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ParametersName.cs" />

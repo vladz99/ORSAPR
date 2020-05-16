@@ -74,11 +74,15 @@
             this.CommonHTextBox = new System.Windows.Forms.TextBox();
             this.ClearButton = new System.Windows.Forms.Button();
             this.BuilderButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ThreadTypeСomboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.CentralRingGroupBox.SuspendLayout();
             this.MiddleRingGroupBox.SuspendLayout();
             this.OuterRingGroupBox.SuspendLayout();
             this.JumperParametersGroupBox.SuspendLayout();
             this.CommonParametersGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CentralRingGroupBox
@@ -131,9 +135,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Высота (H):";
+            this.label3.Text = "Высота (H1):";
             // 
             // label2
             // 
@@ -156,7 +160,7 @@
             // CentralHTextBox
             // 
             this.CentralHTextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.CentralHTextBox.Location = new System.Drawing.Point(159, 71);
+            this.CentralHTextBox.Location = new System.Drawing.Point(157, 71);
             this.CentralHTextBox.Name = "CentralHTextBox";
             this.CentralHTextBox.Size = new System.Drawing.Size(100, 20);
             this.CentralHTextBox.TabIndex = 3;
@@ -168,7 +172,7 @@
             // CentralD2TextBox
             // 
             this.CentralD2TextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.CentralD2TextBox.Location = new System.Drawing.Point(159, 45);
+            this.CentralD2TextBox.Location = new System.Drawing.Point(157, 45);
             this.CentralD2TextBox.Name = "CentralD2TextBox";
             this.CentralD2TextBox.Size = new System.Drawing.Size(100, 20);
             this.CentralD2TextBox.TabIndex = 2;
@@ -180,7 +184,7 @@
             // CentralD1TextBox
             // 
             this.CentralD1TextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.CentralD1TextBox.Location = new System.Drawing.Point(159, 19);
+            this.CentralD1TextBox.Location = new System.Drawing.Point(157, 19);
             this.CentralD1TextBox.Name = "CentralD1TextBox";
             this.CentralD1TextBox.Size = new System.Drawing.Size(100, 20);
             this.CentralD1TextBox.TabIndex = 1;
@@ -239,9 +243,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 74);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
+            this.label9.Size = new System.Drawing.Size(71, 13);
             this.label9.TabIndex = 11;
-            this.label9.Text = "Высота (H):";
+            this.label9.Text = "Высота (H2):";
             // 
             // label8
             // 
@@ -250,7 +254,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 13);
             this.label8.TabIndex = 9;
-            this.label8.Text = "Внешний диаметр (D2):";
+            this.label8.Text = "Внешний диаметр (D4):";
             // 
             // label7
             // 
@@ -259,12 +263,12 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(138, 13);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Внутренний диаметр (D1):";
+            this.label7.Text = "Внутренний диаметр (D3):";
             // 
             // MiddleHTextBox
             // 
             this.MiddleHTextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.MiddleHTextBox.Location = new System.Drawing.Point(159, 71);
+            this.MiddleHTextBox.Location = new System.Drawing.Point(157, 71);
             this.MiddleHTextBox.Name = "MiddleHTextBox";
             this.MiddleHTextBox.Size = new System.Drawing.Size(100, 20);
             this.MiddleHTextBox.TabIndex = 5;
@@ -276,7 +280,7 @@
             // MiddleD2TextBox
             // 
             this.MiddleD2TextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.MiddleD2TextBox.Location = new System.Drawing.Point(159, 45);
+            this.MiddleD2TextBox.Location = new System.Drawing.Point(157, 45);
             this.MiddleD2TextBox.Name = "MiddleD2TextBox";
             this.MiddleD2TextBox.Size = new System.Drawing.Size(100, 20);
             this.MiddleD2TextBox.TabIndex = 3;
@@ -288,7 +292,7 @@
             // MiddleD1TextBox
             // 
             this.MiddleD1TextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.MiddleD1TextBox.Location = new System.Drawing.Point(159, 19);
+            this.MiddleD1TextBox.Location = new System.Drawing.Point(157, 19);
             this.MiddleD1TextBox.Name = "MiddleD1TextBox";
             this.MiddleD1TextBox.Size = new System.Drawing.Size(100, 20);
             this.MiddleD1TextBox.TabIndex = 1;
@@ -347,9 +351,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 74);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 13);
+            this.label15.Size = new System.Drawing.Size(71, 13);
             this.label15.TabIndex = 23;
-            this.label15.Text = "Высота (H):";
+            this.label15.Text = "Высота (H3):";
             // 
             // label14
             // 
@@ -358,7 +362,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(124, 13);
             this.label14.TabIndex = 21;
-            this.label14.Text = "Внешний диаметр (D2):";
+            this.label14.Text = "Внешний диаметр (D6):";
             // 
             // label13
             // 
@@ -368,12 +372,12 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(138, 13);
             this.label13.TabIndex = 19;
-            this.label13.Text = "Внутренний диаметр (D1):";
+            this.label13.Text = "Внутренний диаметр (D5):";
             // 
             // OuterHTextBox
             // 
             this.OuterHTextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.OuterHTextBox.Location = new System.Drawing.Point(159, 71);
+            this.OuterHTextBox.Location = new System.Drawing.Point(157, 71);
             this.OuterHTextBox.Name = "OuterHTextBox";
             this.OuterHTextBox.Size = new System.Drawing.Size(100, 20);
             this.OuterHTextBox.TabIndex = 5;
@@ -385,7 +389,7 @@
             // OuterD2TextBox
             // 
             this.OuterD2TextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.OuterD2TextBox.Location = new System.Drawing.Point(159, 45);
+            this.OuterD2TextBox.Location = new System.Drawing.Point(157, 45);
             this.OuterD2TextBox.Name = "OuterD2TextBox";
             this.OuterD2TextBox.Size = new System.Drawing.Size(100, 20);
             this.OuterD2TextBox.TabIndex = 3;
@@ -397,7 +401,7 @@
             // OuterD1TextBox
             // 
             this.OuterD1TextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.OuterD1TextBox.Location = new System.Drawing.Point(159, 19);
+            this.OuterD1TextBox.Location = new System.Drawing.Point(157, 19);
             this.OuterD1TextBox.Name = "OuterD1TextBox";
             this.OuterD1TextBox.Size = new System.Drawing.Size(100, 20);
             this.OuterD1TextBox.TabIndex = 1;
@@ -427,7 +431,7 @@
             // JumperNTextBox
             // 
             this.JumperNTextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.JumperNTextBox.Location = new System.Drawing.Point(160, 74);
+            this.JumperNTextBox.Location = new System.Drawing.Point(158, 74);
             this.JumperNTextBox.Name = "JumperNTextBox";
             this.JumperNTextBox.Size = new System.Drawing.Size(100, 20);
             this.JumperNTextBox.TabIndex = 3;
@@ -475,7 +479,7 @@
             // JumperLTextBox
             // 
             this.JumperLTextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.JumperLTextBox.Location = new System.Drawing.Point(159, 45);
+            this.JumperLTextBox.Location = new System.Drawing.Point(157, 45);
             this.JumperLTextBox.Name = "JumperLTextBox";
             this.JumperLTextBox.Size = new System.Drawing.Size(100, 20);
             this.JumperLTextBox.TabIndex = 2;
@@ -498,14 +502,14 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(6, 22);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(79, 13);
+            this.label19.Size = new System.Drawing.Size(85, 13);
             this.label19.TabIndex = 31;
-            this.label19.Text = "Диаметра (D):";
+            this.label19.Text = "Диаметра (D7):";
             // 
             // JumperDTextBox
             // 
             this.JumperDTextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.JumperDTextBox.Location = new System.Drawing.Point(159, 19);
+            this.JumperDTextBox.Location = new System.Drawing.Point(157, 19);
             this.JumperDTextBox.Name = "JumperDTextBox";
             this.JumperDTextBox.Size = new System.Drawing.Size(100, 20);
             this.JumperDTextBox.TabIndex = 1;
@@ -540,14 +544,14 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(6, 22);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(144, 13);
+            this.label21.Size = new System.Drawing.Size(150, 13);
             this.label21.TabIndex = 3;
-            this.label21.Text = "Максимальная высота (H):";
+            this.label21.Text = "Максимальная высота (H4):";
             // 
             // CommonHTextBox
             // 
             this.CommonHTextBox.BackColor = System.Drawing.Color.LightGreen;
-            this.CommonHTextBox.Location = new System.Drawing.Point(158, 19);
+            this.CommonHTextBox.Location = new System.Drawing.Point(156, 19);
             this.CommonHTextBox.Name = "CommonHTextBox";
             this.CommonHTextBox.Size = new System.Drawing.Size(100, 20);
             this.CommonHTextBox.TabIndex = 1;
@@ -558,9 +562,9 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(13, 495);
+            this.ClearButton.Location = new System.Drawing.Point(14, 548);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(236, 23);
+            this.ClearButton.Size = new System.Drawing.Size(234, 23);
             this.ClearButton.TabIndex = 5;
             this.ClearButton.Text = "Сбросить параметры";
             this.ClearButton.UseVisualStyleBackColor = true;
@@ -568,19 +572,54 @@
             // 
             // BuilderButton
             // 
-            this.BuilderButton.Location = new System.Drawing.Point(255, 495);
+            this.BuilderButton.Location = new System.Drawing.Point(254, 548);
             this.BuilderButton.Name = "BuilderButton";
-            this.BuilderButton.Size = new System.Drawing.Size(232, 23);
+            this.BuilderButton.Size = new System.Drawing.Size(233, 23);
             this.BuilderButton.TabIndex = 6;
             this.BuilderButton.Text = "Построить";
             this.BuilderButton.UseVisualStyleBackColor = true;
             this.BuilderButton.Click += new System.EventHandler(this.BuilderButton_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ThreadTypeСomboBox);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(13, 495);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(474, 47);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Параметры резьбы";
+            // 
+            // ThreadTypeСomboBox
+            // 
+            this.ThreadTypeСomboBox.FormattingEnabled = true;
+            this.ThreadTypeСomboBox.Items.AddRange(new object[] {
+            "Нет",
+            "Метрическая",
+            "Упорная"});
+            this.ThreadTypeСomboBox.Location = new System.Drawing.Point(156, 19);
+            this.ThreadTypeСomboBox.Name = "ThreadTypeСomboBox";
+            this.ThreadTypeСomboBox.Size = new System.Drawing.Size(100, 21);
+            this.ThreadTypeСomboBox.TabIndex = 5;
+            this.ThreadTypeСomboBox.Text = "Нет";
+            this.ThreadTypeСomboBox.TextChanged += new System.EventHandler(this.ThreadTypeСomboBox_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Тип резьбы:";
+            // 
             // Plugin_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 524);
+            this.ClientSize = new System.Drawing.Size(497, 575);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BuilderButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.CommonParametersGroupBox);
@@ -589,8 +628,8 @@
             this.Controls.Add(this.MiddleRingGroupBox);
             this.Controls.Add(this.CentralRingGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximumSize = new System.Drawing.Size(513, 563);
-            this.MinimumSize = new System.Drawing.Size(513, 563);
+            this.MaximumSize = new System.Drawing.Size(513, 614);
+            this.MinimumSize = new System.Drawing.Size(513, 614);
             this.Name = "Plugin_Form";
             this.ShowIcon = false;
             this.Text = "Параметры втулки";
@@ -604,6 +643,8 @@
             this.JumperParametersGroupBox.PerformLayout();
             this.CommonParametersGroupBox.ResumeLayout(false);
             this.CommonParametersGroupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -656,6 +697,9 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox JumperLTextBox;
         private System.Windows.Forms.TextBox JumperNTextBox;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox ThreadTypeСomboBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 

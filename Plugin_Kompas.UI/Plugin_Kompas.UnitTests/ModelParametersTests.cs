@@ -22,19 +22,19 @@ namespace Plugin_Kompas.UnitTests
             {
                 result = false;
                 message = "Ошибка при создании минимального значения внешнего диаметра " +
-                    "маленького кольца";
+                    "центрального кольца";
             }
             if (_modelParameters.Parameter(ParametersName.CentralRingDiameter1).MaxValue != 60)
             {
                 result = false;
                 message = "Ошибка при создании максимального значения внешнего диаметра " +
-                   "маленького кольца";
+                   "центрального кольца";
             }
             if (_modelParameters.Parameter(ParametersName.CentralRingDiameter1).Value != 50)
             {
                 result = false;
                 message = "Ошибка при создании текущего значения внешнего диаметра " +
-                   "маленького кольца";
+                   "центрального кольца";
             }
             Assert.IsTrue(result, message);
         }
